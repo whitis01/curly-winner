@@ -1,45 +1,49 @@
-import React, { Component } from 'react';
-import MessageView from './message-view.js';
+import React, { useState } from 'react';
+import MessageView from './message-view';
 
-class MessageList extends Component {
-    state = {
-        messages: [
-            {
-                id: 5,
-                from: 'Sampson',
-                content: 'Feed Me buwuwuwu!',
-                status: 'Hungry',
-            },
-            {
-                id: 16,
-                from: 'Bruin',
-                content: 'Ball!!',
-                status: 'Stupid',
-            },
-            {
-                id: 0,
-                from: 'Boci',
-                content: 'I hate Sampson',
-                status: 'Evil',
-            },
-        ],
-    }
+export default function MessageList() {
 
-    render() {
-        const list = this.state.messages.map(
-            message => <MessageView key={ message.id } message={ message } /> // message is the parameter to the MessageView
-        )
+    const dogValues = 
+    [
+        {
+            id: 5,
+            from: 'Sampson',
+            content: 'Feed Me buwuwuwu!',
+            status: 'Hungry',
+        },
+        {
+            id: 8,
+            from: 'Bruin',
+            content: 'Ball!!',
+            status: 'Stupid',
+        },
+        {
+            id: 0,
+            from: 'Boci',
+            content: 'I hate Sampson',
+            status: 'Evil',
+        },
+    ];
+    
+    const [ messages ] = useState(dogValues);
 
-        const viewList = 
-            <div className="doggies">
-                <h1> List of Messages </h1>
-                {list}
-            </div>
+    const messageViews = messages.map(
+        message => <MessageView key={ message.id } message={ message } /> // message is the parameter to the MessageView
+    );
 
-        return(viewList)
-    }
+    const button = <button onClick={ handleEvent }>Test Me I Dare Ya</button>
+
+    const viewList = 
+        <div className="doggies">
+            <h1> List of Messages </h1>
+            { messageViews }
+            { button }
+        </div>
+
+    return(viewList);
 }
 
-export default MessageList;    
-
-
+function handleEvent(e) {
+    alert('Clicker!');
+    console.log(e);
+}
