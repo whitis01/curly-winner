@@ -6,15 +6,15 @@ const MessageView = ({ message }) => {
     const dummy = 
         <div className="message">
             <div className="field">
-                <span className="label">From: </span>
+                <span className="label">From Whom?: </span>
                 <span className="label">{from}: </span>
             </div>    
             <div className="field">
-                <span className="label">Status: </span>
+                <span className="label">Status?: </span>
                 <span className="label">{status} </span>
             </div>    
             <div className="field content">
-                <span className="label">Message: </span>
+                <span className="label">Message?: </span>
                 <span className="label">{content} </span>
             </div>    
         </div>;
